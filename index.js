@@ -1,11 +1,13 @@
 'use strict';
 
-var adapter = require('level-js');
-adapter.adapterName = 'idb-alt';
-adapter.valid = function () {
+var adapter = require('pouchdb-abstract-adapter');
+
+var leveldown = require('level-js');
+leveldown.adapterName = 'idb-alt';
+leveldown.valid = function () {
   return 'idb' in window.PouchDB.adapters &&
       window.PouchDB.adapters.idb.valid();
 }
-adapter.usePrefix = true;
+leveldown.usePrefix = true;
 
-module.exports = adapter;
+module.exports = adapter(leveldown);
