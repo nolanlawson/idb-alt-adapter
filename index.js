@@ -1,7 +1,5 @@
 'use strict';
 
-var adapter = require('pouchdb-abstract-adapter');
-
 var leveldown = require('level-js');
 leveldown.adapterName = 'idb-alt';
 leveldown.valid = function () {
@@ -10,4 +8,4 @@ leveldown.valid = function () {
 }
 leveldown.usePrefix = true;
 
-module.exports = adapter(leveldown);
+module.exports = leveldown;
